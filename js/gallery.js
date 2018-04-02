@@ -119,7 +119,7 @@ $(document).ready ( function () {
 	$('.details').eq(0).hide();
 	$(".moreIndicator").click(function () {
 		//$("img.rot90").toggleClass("rot270", 3000);
-		$("img.rot90").animate({transform: rotate(270deg)}, 3000);
+		$("img.rot90").toggleClass("rot270", 3000);
 		$(".details").slideToggle(1000);
 		
 	});
