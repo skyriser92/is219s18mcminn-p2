@@ -118,7 +118,6 @@ mRequest.send();
 $(document).ready ( function () {
 	$('.details').eq(0).hide();
 	$(".moreIndicator").click(function () {
-		//$("img.rot90").toggleClass("rot270", 3000);
 		$("img.rot90").toggleClass("rot270", 3000);
 		$(".details").slideToggle(1000);
 		
@@ -129,14 +128,16 @@ $(document).ready ( function () {
 	});
 	
 	$("#prevPhoto").click(function () {
-		if (CurrentIndexI === 0) {
-			CurrentIndexI = mImages.length;
-			swapPhoto();
+		if (CurrentIndexI == 0) {
+			CurrentIndexI = mImages.length-2;
+		}
+		else if (CurrentIndexI == 1) {
+			CurrentIndexI = mImages.length- 1;
 		}
 		else {
-			CurrentIndexI = CurrentIndexI - 1;
-			swapPhoto();
+			CurrentIndexI = CurrentIndexI - 2;
 		}
+		swapPhoto()
 		//console.log(CurrentIndexI);
 	});
 });
