@@ -39,7 +39,7 @@ function swapPhoto() {
 	//with a new image from your images array which is loaded 
 	//from the JSON string
 	if(CurrentIndexI < 0) {
-		CurrentIndexI += mImages.legnth;
+		CurrentIndexI += mImages.length;
 	}
 	
 	$("#photo").attr('src', mImages[CurrentIndexI].imgPath);
@@ -49,14 +49,14 @@ function swapPhoto() {
 	
 	CurrentIndexI++;
 	
-	if (CurrentIndexI >= mImages.legnth) {
+	if (CurrentIndexI >= mImages.length) {
 		CurrentIndexI = 0;
 	}
 	
 	console.log('swap photo');
 }
 
-$(document).ready(swapPhoto);
+
 
 // Counter for the mImages array
 var mCurrentIndex = 0;
@@ -74,7 +74,7 @@ var mJson;
 
 // URL for the JSON to load by default
 // Some options for you are: images.json, images.short.json; you will need to create your own extra.json later
-var mUrl = "images.json";;
+var mUrl = "images-short.json";;
 
 
 //XMLHttpRequest function
@@ -90,7 +90,7 @@ mRequest.onreadystatechange = function() {
 			
 			for (var j = 0; j < mJson.images.length; j++) {
 				var I = mJson.images[j];
-				mImages.push(new GalleryImage(I.imgPath, I.location, I.description, I.date));
+				mImages.push(new GalleryImage(I.imgPath, I.imgLocation, I.description, I.date));
 				
 			}
 		
@@ -114,28 +114,30 @@ mRequest.send();
 //	}
 //}
 
-$(document).ready( function() {
-	
-	// This initially hides the photos' metadata information
-	$('.details').eq(0).hide();
-	
-});
 
 $(document).ready ( function () {
 	$('.details').eq(0).hide();
-	$(".moreIndicatior").click(function () {
-		$("img.rot90").toggleClass("rot270", 3000);
+	$(".moreIndicator").click(function () {
+		//$("img.rot90").toggleClass("rot270", 3000);
+		$("img.rot90").animate({transform: rotate(270deg)}, 3000);
 		$(".details").slideToggle(1000);
+		
 	});
 	
 	$("#nextPhoto").click(function() {
 		swapPhoto();
 	});
 	
-	$("prevPhoto").click(function () {
-		CurrentIndexI -=2;
-		swapPhoto();
-		console.log(CurrentIndexI);
+	$("#prevPhoto").click(function () {
+		if (CurrentIndexI === 0) {
+			CurrentIndexI = mImages.length;
+			swapPhoto();
+		}
+		else {
+			CurrentIndexI = CurrentIndexI - 1;
+			swapPhoto();
+		}
+		//console.log(CurrentIndexI);
 	});
 });
 
