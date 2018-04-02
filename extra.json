@@ -1,0 +1,28 @@
+{
+    "images": [
+        {
+            "imgPath": "img/more/light.jpg",
+            "imgLocation": "In the City",
+            "description": "A good night out",
+            "date": "08/22/2014"
+        },
+        {
+            "imgPath": "img/more/wolf.jpg",
+            "imgLocation": "On a Mountain",
+            "description": "Natures mysteries",
+            "date": "01/02/2017"
+        },
+        {
+            "imgPath": "img/more/car1.jpg",
+            "imgLocation": "Driveway",
+            "description": "In the drivers seat of a camaro",
+            "date": "02/06/2012"
+        },
+        {
+            "imgPath": "img/more/car2.jpg",
+            "imgLocation": "Driveway",
+            "description": "Dream car",
+            "date": "04/24/2018"
+        }
+  ]
+}

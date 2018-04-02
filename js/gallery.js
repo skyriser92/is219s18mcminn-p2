@@ -99,24 +99,59 @@ mRequest.onreadystatechange = function() {
 		}
 	}
 };
-mRequest.open('GET',mUrl, true);
+mRequest.open("GET",mUrl, true);
 mRequest.send();
 
-function getQueryParams(qs) {
- qs = qs.split("+").join(" ");
- var params = {},
- tokens,
- re = /[?&]?([^=]+)=([^&]*)/g;
- while (tokens = re.exec(qs)) {
- params[decodeURIComponent(tokens[1])]
- = decodeURIComponent(tokens[2]);
- }
- return params;
+function getQueryParams(qs)
+
+{
+
+                qs = qs.split("+").join(" ");
+
+                var params = {},
+
+                                tokens,
+
+                                re = /[?&]?([^=]+)=([^&]*)/g;
+
+                               
+
+                while (tokens = re.exec(qs))
+
+                {
+
+                                params[decodeURIComponent(tokens[1])]
+
+                                                = decodeURIComponent(tokens[2]);
+
+                }
+
+                return params;
+
 }
+
 var $_GET = getQueryParams(document.location.search);
 
-if ($_GET["json"] != undifined) {
-	mUrl = $_GET["json"];
+ 
+
+ 
+
+// URL for the JSON to load by default
+
+// Some options for you are: images.json, images.short.json; you will need to create your own extra.json later
+
+var mUrl = 'images.json';
+
+ 
+
+ 
+
+if($_GET["json"] != undefined)
+
+{
+
+                mUrl = $_GET["json"];
+
 }
 
 //You can optionally use the following function as your event callback for loading the source of Images from your json data (for HTMLImageObject).
