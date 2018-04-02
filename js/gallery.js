@@ -70,11 +70,9 @@ var mImages = [];
 // Holds the retrived JSON information
 var mJson;
 
-
-
 // URL for the JSON to load by default
 // Some options for you are: images.json, images.short.json; you will need to create your own extra.json later
-var mUrl = "images-short.json";;
+var mUrl = "images.json";;
 
 
 //XMLHttpRequest function
@@ -104,6 +102,22 @@ mRequest.onreadystatechange = function() {
 mRequest.open('GET',mUrl, true);
 mRequest.send();
 
+function getQueryParams(qs) {
+ qs = qs.split("+").join(" ");
+ var params = {},
+ tokens,
+ re = /[?&]?([^=]+)=([^&]*)/g;
+ while (tokens = re.exec(qs)) {
+ params[decodeURIComponent(tokens[1])]
+ = decodeURIComponent(tokens[2]);
+ }
+ return params;
+}
+var $_GET = getQueryParams(document.location.search);
+
+if ($_GET["json"] != undifined) {
+	mUrl = $_GET["json"];
+}
 
 //You can optionally use the following function as your event callback for loading the source of Images from your json data (for HTMLImageObject).
 //@param A GalleryImage object. Use this method for an event handler for loading a gallery Image object (optional).

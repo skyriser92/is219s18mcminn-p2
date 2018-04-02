@@ -88,3 +88,8 @@ Make it animate nicely. You'll need CSS3 for this*/
 	transform: rotate(270deg);
 	transition-duration: .5s;
 }
+
+#photo {
+	height: 389px;
+	width: 518px;
+}
